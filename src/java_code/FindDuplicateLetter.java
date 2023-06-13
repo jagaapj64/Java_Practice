@@ -40,7 +40,7 @@ public class FindDuplicateLetter {
 		str.chars().mapToObj(ch1 -> (char) ch1).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
 		.forEach((k, v) -> {   // without <key,value> pair
 		  if (v >= 2) {
-		   System.out.println(k+" ");}
+		   System.out.println(k+" "+v);}
 		 });
 		
 	}
@@ -48,8 +48,8 @@ public class FindDuplicateLetter {
 //   Method 2
 	private static void findDuplicateJava8GroupingBy(String str) {
 		Stream<Character> charsStream = str.chars().mapToObj(ch1 -> (char) ch1); 
-		Map<Character, Long>  output=charsStream.collect(Collectors.groupingBy(ch2 -> ch2, Collectors.counting())); // with <key,value> pair
-		System.out.println(output);
+		charsStream.collect(Collectors.groupingBy(ch2 -> ch2, Collectors.counting())).entrySet().stream()
+				.filter(e -> e.getValue() >= 2).forEach(System.out::println);
 	}
 
 //	 Method 1
