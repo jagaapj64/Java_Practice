@@ -10,14 +10,12 @@ import java.util.stream.IntStream;
 public class ReverseDigit {
 
 	public static void main(String[] args) {
-		int x=1534236469;
-		System.out.println("original number : "+x+"\n");
+		int x = 1534236469;
+		System.out.println("original number : " + x + "\n");
 		System.out.println("JavaMethod : ");
-		System.out.println("reversed number : "+reverseDigitJava(x)+"\n");
+		System.out.println("reversed number : " + reverseDigitJava(x) + "\n");
 		reverseDigitJava8(x);
-      
-      
-      
+
 	}
 
 	private static void reverseDigitJava8(int x) {
@@ -27,26 +25,29 @@ public class ReverseDigit {
 		List<Integer> list = IntStream.of(a).boxed().collect(Collectors.toCollection(ArrayList::new));
 
 		Collections.sort(list, Comparator.reverseOrder());
-		System.out.println("Java8Method : "+"\n"+"reversed number : ");
-		
+		System.out.println("Java8Method : " + "\n" + "reversed number : ");
+
 		for (Integer integer : list) {
 			System.out.print(integer + " ");
 		}
 	}
 
 	private static int reverseDigitJava(int x) {
-		int temp=x;
-	      int rem=0;
-	      int reverse=0;
-	      
-			while (temp != 0) {
+		int temp = x;
+		int rem = 0;
+		int reverse = 0;
 
-				rem = temp % 10;
-				reverse = reverse*10 + rem;
-				temp = temp / 10;
+		while (temp != 0) {
 
-			}
-			return reverse;		
+			rem = temp % 10;
+			reverse = reverse * 10 + rem;
+			temp = temp / 10;
+
+		}
+		if (reverse == x)
+			return reverse;
+		else
+			return 0;
 	}
 
 }

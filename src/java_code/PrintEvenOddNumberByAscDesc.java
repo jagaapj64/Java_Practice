@@ -16,7 +16,17 @@ public class PrintEvenOddNumberByAscDesc {
 		PrintEvenFollowByOddJavaMethod(arr);
 		PrintEvenFollowByOddJavaMethodSingleLoop(arr);
 		PrintEvenByOddJava8Method(arr);
+		IntStream.range(0, 10).filter(e->e%2==0).forEach(System.out::println);
+		boolean prime=isPrime(5);
+		System.out.println(prime);
+	
+	}
 
+
+	
+	private static boolean isPrime(int nums) {
+//		return !IntStream.rangeClosed(2,nums/2).anyMatch(n-> nums%n==0);
+		return IntStream.rangeClosed(2,nums/2).noneMatch(n-> nums%n==0);
 	}
 
 	private static void PrintEvenFollowByOddJavaMethod(int[] arr) {

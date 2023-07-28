@@ -1,43 +1,42 @@
 package java_code;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FindFirstAndLastPositionOfElementSortedArray {
 
 	public static void main(String[] args) {
-		int[] nums = {1};
+		int[] nums = {1,3,8};
 		int target = 1;
 		int[] first = javaMethod(nums, target);
 		for (Object i : first) {
-			System.out.print(i);
+			System.out.print(i+" ");
 		}
 
 	}
 
 	private static int[] javaMethod(int[] nums, int target) {
-		List<Integer> list = new ArrayList<>();
-	
-		for (int i = 0; i < nums.length; i++) {
-			if (nums[i] == target) {
-				list.add(i);
+
+		int[] temp = new int[2];
+		temp[0] = -1;
+		temp[1] = -1;
+
+		int m = 0;
+		for (int i = 0; i < nums.length ; i++) {
+			if (nums.length == 1 && nums[i] == target) {
+				temp[m++] = i;
+				temp[m] = i;
+				return temp;
 			}
+			if (nums[i] == target) {
+            
+				temp[m++] = i;
+
+			}
+			else {
+				temp[m++] = i;
+				temp[m] = i;
+			}
+
 		}
-		if (list.isEmpty()) {
-			list.add(-1);
-			list.add(-1);
-			list.toArray();
-		}
-		else {
-			 list.toArray();
-		}
-		int[] temp=new int[list.size()];
-		for (int i = 0; i < list.size(); i++) {
-			temp[i]=list.get(i);
-			
-		}
+
 		return temp;
 	}
-	
-
 }
